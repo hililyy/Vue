@@ -1,8 +1,15 @@
 <template>
-    <div id = "acompo">
-        <InputComponent @OnClick="OnClick"></InputComponent>
-        <ListComponent v-bind:key="items.keys" v-bind:value="items.values" @OnRemove="OnRemove"></ListComponent>
-    </div>
+      <div id = "test">
+          <ul style ="padding-left:20px; padding-bottom:10px; margin-bottom:0; border-bottom:1px solid grey;">
+            <li style="margin-right:90px;">key</li>
+            <li style="margin-right:130px;">value</li>
+            <li style="margin-right:30px;">ë™ì‘</li>
+          </ul>
+          <div class="content">
+          <ListComponent v-bind:items ="items" @OnRemove="OnRemove"/>
+          <InputComponent @OnClick="OnClick"/>
+          </div>
+      </div>
 </template>
 
 <script>
@@ -12,37 +19,28 @@ import ListComponent from '@/components/ListComponent.vue'
 export default  {
   data(){
      return{
-       items : [ 
-          { keys:'', values: '' }
-        ]
+        items : [],
       }
    },
     
    created() {
         if (this.items.length > 0){
             for(var i = 0; i < this.items.length; i++) {
-                this.items.keys.push(this.items(i).key);
-                this.items.values.push(this.items(i).value);
+                this.items.keys.push(this.items[i].key);
+                this.items.values.push(this.items[i].value);
             }
         }
     },
  
    methods: {
       OnClick(key,value){
-          // localStorage.setItem(items.key,items.key);
-          // localStorage.setItem(items.value,items.value);
-          // this.items.keys.push(key);
-          // this.items.values.push(value);
           this.items.push({
             keys : key,
             values : value
           });
       },
         OnRemove(items,index) {
-          // localStorage.removeItem(items.key);
-          // localStorage.removeItem(items.value);
           this.items.splice(index,1);
-          //index¿¡¼­ 1°³ÀÇ ¿ä¼Ò Á¦°Å
         }
   },
   
@@ -54,5 +52,19 @@ export default  {
 </script>
 
 <style scoped>
-
+  #test {
+    text-align: center;
+    width : 370px;
+    height: 200px;
+  }
+  li {
+    padding-left:0px;
+    display : inline;
+    list-style:none;
+  }
+  .content {
+    height:200px;
+    overflow-y:scroll;
+    border:1px solid grey;
+  }
 </style>
