@@ -1,70 +1,47 @@
 <template>
-      <div id = "test">
-          <ul style ="padding-left:20px; padding-bottom:10px; margin-bottom:0; border-bottom:1px solid grey;">
-            <li style="margin-right:90px;">key</li>
-            <li style="margin-right:130px;">value</li>
-            <li style="margin-right:30px;">동작</li>
-          </ul>
-          <div class="content">
-          <ListComponent v-bind:items ="items" @OnRemove="OnRemove"/>
-          <InputComponent @OnClick="OnClick"/>
-          </div>
-      </div>
+    <ItemAddRemoveForm
+      :max_height = "200"
+      :data = "data"
+      :form = "form"
+    />
+
+<!--
+      :add_disable = "add_disable"
+      :remove_disable = "remove_disable"
+      @change = "change"
+      :title = '파일설정'
+      :classes = "Object"
+    -->
+
 </template>
 
 <script>
-import InputComponent from '@/components/InputComponent.vue'
-import ListComponent from '@/components/ListComponent.vue'
+import ItemAddRemoveForm from '@/components/ItemAddRemoveForm.vue'
 
-export default  {
+export default  { 
   data(){
-     return{
-        items : [],
-      }
-   },
-    
-   created() {
-        if (this.items.length > 0){
-            for(var i = 0; i < this.items.length; i++) {
-                this.items.keys.push(this.items[i].key);
-                this.items.values.push(this.items[i].value);
-            }
+    return {
+        data: [],
+        form : [{
+            // form 1)
+            field : 'key',  // 우리가 사용하는 부분..
+            type : 'autocomplete',  //text, autocomplete만
+            label : 'key',  // placeholder
+        //     option : [{label : 'id', value : 'id'}], //autocomplete에서 사용하는 option-
+        //  //   width : 400, 
+        },
+        
+        { // form 2)
+            field : 'value',
+            type : 'text',
+            label : 'value',
         }
-    },
- 
-   methods: {
-      OnClick(key,value){
-          this.items.push({
-            keys : key,
-            values : value
-          });
-      },
-        OnRemove(items,index) {
-          this.items.splice(index,1);
-        }
+      ],
+    }
   },
-  
+
   components : {
-      InputComponent,
-      ListComponent
-   },
+    ItemAddRemoveForm
+  }
 }
 </script>
-
-<style scoped>
-  #test {
-    text-align: center;
-    width : 370px;
-    height: 200px;
-  }
-  li {
-    padding-left:0px;
-    display : inline;
-    list-style:none;
-  }
-  .content {
-    height:200px;
-    overflow-y:scroll;
-    border:1px solid grey;
-  }
-</style>

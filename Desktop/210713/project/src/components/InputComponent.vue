@@ -1,34 +1,49 @@
 <template>
     <div id ="InputBox">
-        <input id = "InputBoxkey" type ="text" v-model ="items.newkey" placeholder = "key">
-        <input id = "InputBoxvalue" type ="text" v-model ="items.newvalue" placeholder = "value">
-        <button id = "addButton" @click ="onClick">추가</button>
+            <v-autocomplete>
+
+            </v-autocomplete>
+             <input 
+                id = "InputBoxkey" 
+                type ="text" 
+                v-model ="data.newkey" 
+                placeholder = "key"
+            >
+            <input 
+                id = "InputBoxvalue" 
+                type ="text" 
+                v-model ="data.newvalue" 
+                placeholder = "value"
+            >
+            <button id = "addButton" @click ="change">추가</button>
     </div>
 </template>
 
 <script>
+
     export default {
+        components: {
+           
+        },
         data() {
             return {
-                items : [ 
-                { newkey:'', newvalue: '' }
-                ]
+                data : [ 
+                { newkey:'', newvalue: '' } ],
             }
         },
         methods :{
-            onClick() {
-                if(this.items.newkey !== "" && this.items.newvalue !==""){
-
-                    var key = this.items.newkey && this.items.newkey.trim();
-                    var value = this.items.newvalue && this.items.newvalue.trim();
+            change() {
+                if(this.data.newkey !== "" && this.data.newvalue !==""){
+                    var key = this.data.newkey && this.data.newkey.trim();
+                    var value = this.data.newvalue && this.data.newvalue.trim();
                     
-                    this.$emit('OnClick',key, value);
+                    this.$emit('change',key, value);
                     this.clearInput();
                 }
             },
             clearInput(){
-                this.items.newkey = '';
-                this.items.newvalue = '';
+                this.data.newkey = '';
+                this.data.newvalue = '';
 
             }
         }
@@ -36,6 +51,7 @@
 </script>
 
 <style scoped>
+    /* src="vue-advanced-search/dist/AdvancedSearch.css" */
     #InputBoxkey{
         width : 100px;
         height : 20px;

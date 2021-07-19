@@ -1,7 +1,7 @@
 <template>
     <section>
         <ul id ="list">
-            <li v-for="(item, index) in items" v-bind:key="index">
+            <li v-for="(item, index) in data" v-bind:key="index">
                 <input id = "keyInputBox" type ="text" v-model ="item.keys">
                 <input id = "valueInputBox" type ="text" v-model ="item.values">
                 <button id ="removeButton" @click="OnRemove(item,index)">제거</button>
@@ -12,7 +12,9 @@
 
 <script>
 export default {
-    props : ['items'],
+    props : {
+        data : Array,
+    },
     methods : {
         OnRemove(item, index){
             this.$emit('OnRemove', item, index);
