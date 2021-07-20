@@ -10,7 +10,9 @@
                 :data = "data" 
                 @OnRemove = "OnRemove"/>
             <InputComponent 
-                @change= "change"/>
+                :data = "data"
+                @change= "change"
+                :form = "form" />
           </div>
       </div>
 </template>
@@ -21,17 +23,13 @@ import ListComponent from '@/components/ListComponent.vue'
 
 export default  {
    props : {
-    max_height : Number,
-    data : Array,
+        max_height : Number,
+        data : Array,
+        form : Array,
   //   add_disable : Array,
   //   remove_disable : Function,
   //   change : Function,
-  //   // title : String,
-   },
-  
-  data(){
-     return{
-      }
+  //    title : String,
    },
     
    created() {
@@ -41,6 +39,8 @@ export default  {
                 this.data.values.push(this.data[i].value);
             }
         }
+
+        
     },
  
    methods: {
@@ -49,6 +49,27 @@ export default  {
             keys : key,
             values : value
           });
+
+          // var i;
+          // console.log(this.form.option);
+          // if(this.form.option !== undefined){
+          //     console.log("enter if");
+          //     console.log("length : "+ this.form.option.length);
+          //     for(i=0;i<this.form.option.length;i++){
+          //       if(!this.form.option.include(key)){
+          //         this.form.option.push(key);
+          //       }
+          //     }
+          // }
+          // else {
+          //   console.log("enter elseif");
+          //   console.log(key);
+          //   this.form.option.push({key});
+          //   console.log("success push");
+          // }
+          // console.log(this.form.option[0]);
+          
+          
       },
         OnRemove(data,index) {
           this.data.splice(index,1);

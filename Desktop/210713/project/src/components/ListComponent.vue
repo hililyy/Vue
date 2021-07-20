@@ -30,14 +30,14 @@ export default {
 
     #keyInputBox{
         width : 100px;
-        height : 20px;
+        height : 26px;
         margin : 0px 10px 0px 0px;
         border-style : solid;
     }
 
     #valueInputBox{
         width : 150px;
-        height : 20px;
+        height : 26px;
         margin : 0px 10px 0px 0px;
         border-style : solid;
     }

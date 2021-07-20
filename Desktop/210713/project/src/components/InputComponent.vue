@@ -1,20 +1,23 @@
 <template>
     <div id ="InputBox">
-            <v-autocomplete>
-
-            </v-autocomplete>
              <input 
                 id = "InputBoxkey" 
                 type ="text" 
-                v-model ="data.newkey" 
+                v-model ="newdata.newkey" 
                 placeholder = "key"
-            >
+                list ="keylist">
+
+            <datalist id = "keylist">
+                
+                <option v-for="(item, index) in data" v-bind:key="index" >{{item.keys}}</option>
+            </datalist>
+            
             <input 
                 id = "InputBoxvalue" 
                 type ="text" 
-                v-model ="data.newvalue" 
+                v-model ="newdata.newvalue" 
                 placeholder = "value"
-            >
+            > 
             <button id = "addButton" @click ="change">추가</button>
     </div>
 </template>
@@ -22,28 +25,41 @@
 <script>
 
     export default {
-        components: {
-           
+        props : {
+            data : Array,
+            form : Array,
         },
+
         data() {
             return {
-                data : [ 
+                newdata : [ 
                 { newkey:'', newvalue: '' } ],
             }
         },
+        
         methods :{
             change() {
-                if(this.data.newkey !== "" && this.data.newvalue !==""){
-                    var key = this.data.newkey && this.data.newkey.trim();
-                    var value = this.data.newvalue && this.data.newvalue.trim();
+                if(this.newdata.newkey !== "" && this.newdata.newvalue !==""){
+                    var key = this.newdata.newkey && this.newdata.newkey.trim();
+                    var value = this.newdata.newvalue && this.newdata.newvalue.trim();
                     
                     this.$emit('change',key, value);
                     this.clearInput();
                 }
+                var i;
+                console.log("data length : " + this.data.length);
+                for(i = 0; i < this.data.length; i++){
+                    console.log(i + " data key " + this.data[i].keys);
+                }
+
+                console.log("option length : " + this.form.option.length);
+                for(i = 0; i < this.form.option.length; i++){
+                    console.log(i + " option key " + this.form.option[i]);
+                }
             },
             clearInput(){
-                this.data.newkey = '';
-                this.data.newvalue = '';
+                this.newdata.newkey = '';
+                this.newdata.newvalue = '';
 
             }
         }
@@ -51,17 +67,19 @@
 </script>
 
 <style scoped>
-    /* src="vue-advanced-search/dist/AdvancedSearch.css" */
+    #InputBox{
+        margin-top:15px;
+    }
     #InputBoxkey{
         width : 100px;
-        height : 20px;
+        height : 26px;
         margin-right: 10px;
         border-style : solid;
     }
 
     #InputBoxvalue{
         width : 150px;
-        height : 20px;
+        height : 26px;
         margin-right: 10px;
         border-style : solid;
     }

@@ -9,7 +9,7 @@
       :add_disable = "add_disable"
       :remove_disable = "remove_disable"
       @change = "change"
-      :title = 'íŒŒì¼ì„¤ì •'
+      :title = 'ÆÄÀÏ¼³Á¤'
       :classes = "Object"
     -->
 
@@ -24,13 +24,12 @@ export default  {
         data: [],
         form : [{
             // form 1)
-            field : 'key',  // ìš°ë¦¬ê°€ ì‚¬ìš©í•˜ëŠ” ë¶€ë¶„..
-            type : 'autocomplete',  //text, autocompleteë§Œ
+            field : 'key',  // ¿ì¸®°¡ »ç¿ëÇÏ´Â ºÎºĞ..
+            type : 'autocomplete',  //text, autocomplete¸¸
             label : 'key',  // placeholder
-        //     option : [{label : 'id', value : 'id'}], //autocompleteì—ì„œ ì‚¬ìš©í•˜ëŠ” option-
+           // option : , //autocomplete¿¡¼­ »ç¿ëÇÏ´Â option-
         //  //   width : 400, 
         },
-        
         { // form 2)
             field : 'value',
             type : 'text',
