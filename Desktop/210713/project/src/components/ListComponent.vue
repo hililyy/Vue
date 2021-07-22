@@ -52,6 +52,9 @@ export default {
     li{
         margin-top : 15px;
     }
-
+    
+    input {
+        padding-left : 5px;
+    }
 
 </style>

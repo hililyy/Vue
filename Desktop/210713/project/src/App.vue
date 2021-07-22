@@ -6,10 +6,10 @@
     />
 
 <!--
+      :title = "íŒŒì¼ ì„¤ì •"
       :add_disable = "add_disable"
       :remove_disable = "remove_disable"
       @change = "change"
-      :title = 'ÆÄÀÏ¼³Á¤'
       :classes = "Object"
     -->
 
@@ -24,10 +24,10 @@ export default  {
         data: [],
         form : [{
             // form 1)
-            field : 'key',  // ¿ì¸®°¡ »ç¿ëÇÏ´Â ºÎºĞ..
-            type : 'autocomplete',  //text, autocomplete¸¸
+            field : 'key',  // ìš°ë¦¬ê°€ ì‚¬ìš©í•˜ëŠ” ë¶€ë¶„
+            type : 'autocomplete',  //text, autocompleteë§Œ
             label : 'key',  // placeholder
-           // option : , //autocomplete¿¡¼­ »ç¿ëÇÏ´Â option-
+            option : [], //autocompleteì—ì„œ ì‚¬ìš©í•˜ëŠ” option-
         //  //   width : 400, 
         },
         { // form 2)
@@ -38,7 +38,9 @@ export default  {
       ],
     }
   },
-
+  methods : {
+    
+  },
   components : {
     ItemAddRemoveForm
   }

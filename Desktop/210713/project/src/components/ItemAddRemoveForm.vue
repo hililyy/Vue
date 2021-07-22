@@ -1,8 +1,9 @@
 <template>
       <div id = "test">
-          <ul style ="padding-left:20px; padding-bottom:10px; margin-bottom:0; border-bottom:1px solid grey;">
+        <h1>{{"파일 설정"}}</h1>
+          <ul>
             <li style="margin-right:90px;">key</li>
-            <li style="margin-right:130px;">value</li>
+            <li style="margin-right:120px;">value</li>
             <li style="margin-right:30px;">동작</li>
           </ul>
           <div class="content" :style="cssVariable">
@@ -25,51 +26,23 @@ export default  {
    props : {
         max_height : Number,
         data : Array,
-        form : Array,
+        form : Array
   //   add_disable : Array,
   //   remove_disable : Function,
   //   change : Function,
   //    title : String,
    },
-    
-   created() {
-        if (this.data.length > 0){
-            for(var i = 0; i < this.data.length; i++) {
-                this.data.keys.push(this.data[i].key);
-                this.data.values.push(this.data[i].value);
-            }
-        }
-
-        
-    },
  
    methods: {
       change(key,value){
           this.data.push({
-            keys : key,
-            values : value
+              keys : key,
+              values : value
           });
 
-          // var i;
-          // console.log(this.form.option);
-          // if(this.form.option !== undefined){
-          //     console.log("enter if");
-          //     console.log("length : "+ this.form.option.length);
-          //     for(i=0;i<this.form.option.length;i++){
-          //       if(!this.form.option.include(key)){
-          //         this.form.option.push(key);
-          //       }
-          //     }
-          // }
-          // else {
-          //   console.log("enter elseif");
-          //   console.log(key);
-          //   this.form.option.push({key});
-          //   console.log("success push");
-          // }
-          // console.log(this.form.option[0]);
-          
-          
+          if(!this.form[0].option.includes(key)){
+              this.form[0].option.push(key);
+          }
       },
         OnRemove(data,index) {
           this.data.splice(index,1);
@@ -103,6 +76,18 @@ export default  {
   .content {
     height: var(--max_height); 
     overflow-y:scroll;
+    border: 1px solid grey;
+    border-top-width : 0px;
+  }
+  ul { 
+    padding : 10px 0px 10px 10px;
+    margin-bottom : 0; 
     border:1px solid grey;
+  }
+  h1{
+    text-align: left;
+    font-size: medium;
+    margin : 15px 0px 10px 10px;
+
   }
 </style>

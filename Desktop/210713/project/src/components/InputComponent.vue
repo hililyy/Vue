@@ -8,8 +8,7 @@
                 list ="keylist">
 
             <datalist id = "keylist">
-                
-                <option v-for="(item, index) in data" v-bind:key="index" >{{item.keys}}</option>
+                <option v-for="(item, index) in form[0].option" v-bind:key="index" >{{item}}</option>
             </datalist>
             
             <input 
@@ -38,30 +37,24 @@
         },
         
         methods :{
-            change() {
-                if(this.newdata.newkey !== "" && this.newdata.newvalue !==""){
+            
+            change() {                
+                if(this.add_disable()){
                     var key = this.newdata.newkey && this.newdata.newkey.trim();
                     var value = this.newdata.newvalue && this.newdata.newvalue.trim();
                     
                     this.$emit('change',key, value);
                     this.clearInput();
                 }
-                var i;
-                console.log("data length : " + this.data.length);
-                for(i = 0; i < this.data.length; i++){
-                    console.log(i + " data key " + this.data[i].keys);
-                }
-
-                console.log("option length : " + this.form.option.length);
-                for(i = 0; i < this.form.option.length; i++){
-                    console.log(i + " option key " + this.form.option[i]);
-                }
             },
             clearInput(){
                 this.newdata.newkey = '';
                 this.newdata.newvalue = '';
-
-            }
+            },
+            add_disable () {
+                if(this.newdata.newkey !== "" && this.newdata.newvalue !== "")
+                    return true;
+            },
         }
     }
 </script>
@@ -91,5 +84,8 @@
         border-style : solid;
         border-color :rgb(173, 182, 190);
         background-color :rgb(225, 235, 255);
+    }
+    input {
+        padding-left : 5px;
     }
 </style>
