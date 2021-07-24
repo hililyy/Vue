@@ -1,11 +1,12 @@
 <template>
     <div id ="InputBox">
-             <input 
+            <input 
                 id = "InputBoxkey" 
                 type ="text" 
                 v-model ="newdata.newkey" 
                 placeholder = "key"
-                list ="keylist">
+                list ="keylist"
+            />
 
             <datalist id = "keylist">
                 <option v-for="(item, index) in form[0].option" v-bind:key="index" >{{item}}</option>
@@ -16,7 +17,7 @@
                 type ="text" 
                 v-model ="newdata.newvalue" 
                 placeholder = "value"
-            > 
+            /> 
             <button id = "addButton" @click ="change">추가</button>
     </div>
 </template>

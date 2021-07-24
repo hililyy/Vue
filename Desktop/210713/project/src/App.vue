@@ -1,14 +1,14 @@
 <template>
-    <ItemAddRemoveForm
-      :max_height = "200"
+    <item-add-remove-form
+      :max-height = "200"
       :data = "data"
       :form = "form"
+      title = "파일 설정"
     />
 
 <!--
-      :title = "파일 설정"
-      :add_disable = "add_disable"
-      :remove_disable = "remove_disable"
+      @add-disable = "add_disable"
+      @remove-disable = "remove_disable"
       @change = "change"
       :classes = "Object"
     -->

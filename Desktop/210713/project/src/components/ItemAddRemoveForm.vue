@@ -24,7 +24,7 @@ import ListComponent from '@/components/ListComponent.vue'
 
 export default  {
    props : {
-        max_height : Number,
+        maxHeight : Number,
         data : Array,
         form : Array
   //   add_disable : Array,
@@ -51,7 +51,7 @@ export default  {
   computed:{
     cssVariable(){
       return{
-        '--max_height' : this.max_height + 'px',
+        '--maxHeight' : this.maxHeight + 'px',
       }
     },
   },
@@ -74,7 +74,7 @@ export default  {
     list-style:none;
   }
   .content {
-    height: var(--max_height); 
+    height: var(--maxHeight); 
     overflow-y:scroll;
     border: 1px solid grey;
     border-top-width : 0px;
